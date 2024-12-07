@@ -1,6 +1,7 @@
 % Log Home Inspections
 % Legajo: 1762310
 % Pablo Nicolas La Rocca
+% Jueves TM 
 
 % Punto 1
 % vive(Persona, Ambiente)
