@@ -74,6 +74,9 @@ compra(Plata,Valor,Resto,Lista,ListaFinal) :-
 compras([],_,[],[]) :- true.
 
 % compras(tasasValor,2000000,[],ListaFinal).
+% Idea: realizar compras involucraba comprar una casa y anadirla a la lista
+% si dicha compra se efectuaba se volvia a llamar a compras con las
+% casas restantes,
 compras([Cabeza|Cola],Plata,Lista,ListaFinal):-
     compra(Plata,Cabeza,Resto,Lista,ListaFinal),
     compras(Cola,Resto,ListaFinal,ListaFinal2).
@@ -84,10 +87,8 @@ compra2(Plata,Valor):- Plata >= Valor.
 compras2(Plata,Personas):-
     forall( tasa(Persona,Valor), compra2(Plata,Valor) ).
 
-% findall( tasasValor,  )
-
 % sublista(Lista1,Lista2)
-% Sirve para saber si Lista2 esta en Lista1
+% Sirve para saber generar permutaciones de listas. sublista([1,2,3],Cola).
 sublista([],[]).
 sublista([_|Cola], Sublista) :- sublista(Cola,Sublista).
 sublista([Cabeza|Cola],[Cabeza|Sublista]) :- sublista(Cola,Sublista).
