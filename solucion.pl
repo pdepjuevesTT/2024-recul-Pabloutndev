@@ -69,11 +69,12 @@ compra(Plata,Valor,Resto) :-
     Resto is Plata - Valor.
 
 % agregar a la lista
-compras([Cabeza|Cola],MiLista,Plata):-
-    compra(Plata,Cabeza,Resto),
-    
+compras([],_) :- true.
 
-compras([],Plata) :- true.
+compras([Cabeza|Cola],Plata):-
+    compra(Plata,Cabeza,Resto),
+
+final()
 
 % sublista(Lista1,Lista2)
 % Sirve para saber si Lista2 esta en Lista1
