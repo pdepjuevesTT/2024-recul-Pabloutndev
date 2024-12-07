@@ -1,5 +1,5 @@
 # Paradigma lógico
 
-Consigna:
+Consigna: Log Home Inspections
 
-Nombre:
+Nombre: Pablo La Rocca (Legajo: 1762310)
