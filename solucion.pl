@@ -60,17 +60,25 @@ tasa(julian,140000).
 tasa(vale,95000).
 tasa(fer,60000).
 
+tasas([juan,nico,alf,julian,vale,fer]).
+tasasValor([150000,80000,75000,140000,95000,60000]).
+
+% Condicion de compra y devuelve el resto    
 compra(Plata,Valor,Resto) :-
     Plata >= Valor,
     Resto is Plata - Valor.
 
-comprar(Plata):-
-    tasa(_,Valor),
-    compra(Plata,Valor,Resto).
+% agregar a la lista
+compras([Cabeza|Cola],MiLista,Plata):-
+    compra(Plata,Cabeza,Resto),
+    
 
+compras([],Plata) :- true.
+
+% sublista(Lista1,Lista2)
+% Sirve para saber si Lista2 esta en Lista1
 sublista([],[]).
 sublista([_|Cola], Sublista) :- sublista(Cola,Sublista).
 sublista([Cabeza|Cola],[Cabeza|Sublista]) :- sublista(Cola,Sublista).
-
 
 %Ejemplo: Juan 100000
