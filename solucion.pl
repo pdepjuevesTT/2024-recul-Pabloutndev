@@ -60,10 +60,17 @@ tasa(julian,140000).
 tasa(vale,95000).
 tasa(fer,60000).
 
-compra(Plata):-
-    
+compra(Plata,Valor,Resto) :-
+    Plata >= Valor,
+    Resto is Plata - Valor.
+
+comprar(Plata):-
+    tasa(_,Valor),
+    compra(Plata,Valor,Resto).
 
 sublista([],[]).
 sublista([_|Cola], Sublista) :- sublista(Cola,Sublista).
 sublista([Cabeza|Cola],[Cabeza|Sublista]) :- sublista(Cola,Sublista).
+
+
 %Ejemplo: Juan 100000
