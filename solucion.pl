@@ -82,11 +82,7 @@ compras([Cabeza|Cola],Plata,Lista,ListaFinal):-
 compra2(Plata,Valor):- Plata >= Valor.
 
 compras2(Plata,Personas):-
-    tasa(Persona, Valor),
-    findall( Persona, compra2(Plata,Valor), Personas ),
-    % resto
-    compras2(Personas)
-
+    forall( tasa(Persona,Valor), compra2(Plata,Valor) ).
 
 % findall( tasasValor,  )
 
