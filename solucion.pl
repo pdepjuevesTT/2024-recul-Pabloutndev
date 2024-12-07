@@ -11,13 +11,32 @@ vive(nico,depa(3,2)).
 vive(alf,depa(3,1)).
 vive(julian,loft(2000)).
 vive(vale,depa(4,1)).
-vive(fer,110).
+vive(fer,casa(110)).
 vive(rocio,casa(90)).
 
-vivenEn([alf,juan,nico,julian],almagro).
-vivenEn([vale,fer],flores).
+viveEn(alf,almagro).
+viveEn(juan,almagro).
+viveEn(nico,almagro).
+viveEn(julian,almagro).
+viveEn(vale,flores).
+viveEn(fer,flores).
+
+persona(Persona) :- vive(Persona, _).
+barrio(Barrio) :- viveEn(_,Barrio).
 
 % Punto 2
-esCopado(Persona, casa(Metros)) :-
-    vive(Persona,)
-    Metros > 100.
+% esCopada(Persona, Ambiente)
+esCopada(_, casa(Metros)) :- Metros > 100.
+
+esCopada(_, depa(Ambientes,_)):- Ambientes > 3.
+
+esCopada(_, depa(_,Banio)):- Banio > 3.
+
+esCopada(_, loft(Anio)):- Anio > 2015.
+
+copado(Barrio):-
+    barrio(Barrio),
+    forall( (viveEn(Persona,Barrio),
+            vive(Persona,Propiedad)), esCopada(Persona, Propiedad) ).
+
+% Punto 3
