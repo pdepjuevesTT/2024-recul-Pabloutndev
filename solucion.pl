@@ -40,3 +40,15 @@ copado(Barrio):-
             vive(Persona,Propiedad)), esCopada(Persona, Propiedad) ).
 
 % Punto 3
+
+esBarato(loft(Anio)) :- Anio < 2005.
+esBarato(casas(Metros)) :- Metros < 90.
+esBarato(depa(Ambientes,_)) :- Ambientes == 1.
+esBarato(depa(Ambientes,_)) :- Ambientes == 2.
+
+esCaro(Barrio):-
+    barrio(Barrio),
+    forall( (viveEn(Persona,Barrio),
+            vive(Persona,Propiedad)), not(esBarato(Propiedad)) ).
+
+% Punto 4
