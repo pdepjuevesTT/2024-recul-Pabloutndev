@@ -60,21 +60,35 @@ tasa(julian,140000).
 tasa(vale,95000).
 tasa(fer,60000).
 
+% OPCION 1
 tasas([juan,nico,alf,julian,vale,fer]).
 tasasValor([150000,80000,75000,140000,95000,60000]).
 
 % Condicion de compra y devuelve el resto    
-compra(Plata,Valor,Resto) :-
+compra(Plata,Valor,Resto,Lista,ListaFinal) :-
     Plata >= Valor,
-    Resto is Plata - Valor.
+    Resto is Plata - Valor,
+    append(Lista,Valor,ListaFinal).
 
 % agregar a la lista
-compras([],_) :- true.
+compras([],_,[],[]) :- true.
 
-compras([Cabeza|Cola],Plata):-
-    compra(Plata,Cabeza,Resto),
+% compras(tasasValor,2000000,[],ListaFinal).
+compras([Cabeza|Cola],Plata,Lista,ListaFinal):-
+    compra(Plata,Cabeza,Resto,Lista,ListaFinal),
+    compras(Cola,Resto,ListaFinal,ListaFinal2).
 
-final()
+% OPCION 2
+compra2(Plata,Valor):- Plata >= Valor.
+
+compras2(Plata,Personas):-
+    tasa(Persona, Valor),
+    findall( Persona, compra2(Plata,Valor), Personas ),
+    % resto
+    compras2(Personas)
+
+
+% findall( tasasValor,  )
 
 % sublista(Lista1,Lista2)
 % Sirve para saber si Lista2 esta en Lista1
