@@ -25,19 +25,19 @@ persona(Persona) :- vive(Persona, _).
 barrio(Barrio) :- viveEn(_,Barrio).
 
 % Punto 2
-% esCopada(Persona, Ambiente)
-esCopada(_, casa(Metros)) :- Metros > 100.
+% esCopada(Ambiente)
+esCopada(casa(Metros)) :- Metros > 100.
 
-esCopada(_, depa(Ambientes,_)):- Ambientes > 3.
+esCopada(depa(Ambientes,_)):- Ambientes > 3.
 
-esCopada(_, depa(_,Banio)):- Banio > 3.
+esCopada(depa(_,Banio)):- Banio > 3.
 
-esCopada(_, loft(Anio)):- Anio > 2015.
+esCopada(loft(Anio)):- Anio > 2015.
 
 copado(Barrio):-
     barrio(Barrio),
     forall( (viveEn(Persona,Barrio),
-            vive(Persona,Propiedad)), esCopada(Persona, Propiedad) ).
+            vive(Persona,Propiedad)), esCopada(Propiedad) ).
 
 % Punto 3
 
@@ -52,3 +52,5 @@ esCaro(Barrio):-
             vive(Persona,Propiedad)), not(esBarato(Propiedad)) ).
 
 % Punto 4
+
+
