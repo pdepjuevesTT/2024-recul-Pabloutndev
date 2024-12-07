@@ -52,5 +52,18 @@ esCaro(Barrio):-
             vive(Persona,Propiedad)), not(esBarato(Propiedad)) ).
 
 % Punto 4
+% tasa(Persona,Valor)
+tasa(juan,150000).
+tasa(nico,80000).
+tasa(alf,75000).
+tasa(julian,140000).
+tasa(vale,95000).
+tasa(fer,60000).
 
+compra(Plata):-
+    
 
+sublista([],[]).
+sublista([_|Cola], Sublista) :- sublista(Cola,Sublista).
+sublista([Cabeza|Cola],[Cabeza|Sublista]) :- sublista(Cola,Sublista).
+%Ejemplo: Juan 100000
